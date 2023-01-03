@@ -1,16 +1,12 @@
-import sys
-
-a = int(sys.stdin.readline())
-data = list(map(int,sys.stdin.readline().split()))
-b=0
-
-for i in range(a+1):
-    k = int(data[i]**(1/2))
-    sum = 0
-    for j in range(1, k+1):
-        if (data[i] % j) != 0:
-            sum += 1
-    if sum == 0:
-        b += 1
-        print(data[i])
-print(b)
+n = int(input())
+numbers = map(int, input().split())
+sosu = 0
+for num in numbers:
+    error = 0
+    if num > 1 :
+        for i in range(2, num):  # 2부터 n-1까지
+            if num % i == 0:
+                error += 1  # 2부터 n-1까지 나눈 몫이 0이면 error가 증가
+        if error == 0:
+            sosu += 1  # error가 없으면 소수.
+print(sosu)
