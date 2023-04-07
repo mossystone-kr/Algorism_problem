@@ -45,13 +45,13 @@ class player:
         if self.power >= ply_persent:
             ply_persent2 = rd.randrange(1, 1000)
             if self.critical >= ply_persent2:
-                ally.health = ally.health - self.power * self.critic / 1000
-                return self.name, "크리티컬!", self.power * self.critic / 1000, ally.name, ally.health
+                ally.health = ally.health - self.power * self.critic / 100
+                return self.name, "크리티컬!!", self.power * self.critic / 100, ally.name, ally.health / 10
             else:
-                ally.health = ally.health - self.power / 10
-                return self.name, self.power / 10, ally.name, ally.health
+                ally.health = ally.health - self.power
+                return self.name, "일반 공격", self.power, ally.name, ally.health / 10
         else:
-            return self.name, "공격 실패!", 0, ally.name, ally.health
+            return self.name, "공격 실패!", 0, ally.name, ally.health / 10
 
 
 def typing(strigab, dsv=True):
@@ -81,7 +81,7 @@ def foolish_fun(dsav, da=True):
 
 def mapping_md5(adbad):
     adbad.md5 = hashlib.md5(adbad.name.encode()).hexdigest()
-    adbad.health = int((int(adbad.md5[0] + adbad.md5[1], 16) + 1) * 3000 / 256)
+    adbad.health = int((int(adbad.md5[0] + adbad.md5[1], 16) + 1) * 4000 / 256 + 1000)
     adbad.defence = int((int(adbad.md5[2] + adbad.md5[3], 16) + 1) * 1000 / 256)
     adbad.power = int((int(adbad.md5[4] + adbad.md5[5], 16) + 1) * 1000 / 256)
     adbad.speed = int((int(adbad.md5[6] + adbad.md5[7], 16) + 1) * 1000 / 256)
@@ -154,6 +154,22 @@ time.sleep(1)
 
 typing("게임을 시작합니다...")
 
-for _ in range(10):
-    print(player1.attack(player2))
-    print(player2.attack(player1))
+turn = 1
+while True:
+    print('%s %s %d %s %d' % player1.attack(player2))
+    if player2.health <= 0:
+        os.system("cls")
+        print(player1.name + "승리!")
+        print('승자의 남은 체력 : %.2f ' % (player1.health / 10))
+        print('진행한 턴 수 : %d' % turn)
+        break
+    time.sleep(1)
+    print('%s %s %d %s %d' % player2.attack(player1))
+    if player1.health <= 0:
+        os.system("cls")
+        print(player2.name + "승리!")
+        print('승자의 남은 체력 : %.2f ' % (player2.health / 10))
+        print('진행한 턴 수 : %d' % turn)
+        break
+    time.sleep(1)
+    turn = turn + 1
