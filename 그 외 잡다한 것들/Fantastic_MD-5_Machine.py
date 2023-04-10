@@ -46,10 +46,10 @@ class player:
             ply_persent2 = rd.randrange(1, 1000)
             if self.critical >= ply_persent2:
                 ally.health = ally.health - self.power * self.critic / 100
-                return self.name, "크리티컬!!", self.power * self.critic / 100, ally.name, ally.health / 10
+                return self.name, "크리티컬!!", self.power * self.critic / 1000, ally.name, ally.health / 10
             else:
                 ally.health = ally.health - self.power
-                return self.name, "일반 공격", self.power, ally.name, ally.health / 10
+                return self.name, "일반 공격", self.power / 10, ally.name, ally.health / 10
         else:
             return self.name, "공격 실패!", 0, ally.name, ally.health / 10
 
@@ -156,7 +156,8 @@ typing("게임을 시작합니다...")
 
 turn = 1
 while True:
-    print('%s %s %d %s %d' % player1.attack(player2))
+    print('%s의 공격\n %s %d 데미지\n %s의 남은 체력 : %d' % player1.attack(player2))
+    print('------------------------------------------')
     if player2.health <= 0:
         os.system("cls")
         print(player1.name + "승리!")
@@ -164,7 +165,8 @@ while True:
         print('진행한 턴 수 : %d' % turn)
         break
     time.sleep(1)
-    print('%s %s %d %s %d' % player2.attack(player1))
+    print('%s의 공격\n %s %d 데미지\n %s의 남은 체력 : %d' % player2.attack(player1))
+    print('------------------------------------------')
     if player1.health <= 0:
         os.system("cls")
         print(player2.name + "승리!")
