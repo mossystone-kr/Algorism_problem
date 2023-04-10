@@ -107,9 +107,9 @@ mapping_md5(player1)
 mapping_md5(player2)
 
 os.system('cls')
-print(player1.name + ' vs ' + player2.name)
-print("")
 typing("서로의 스텟")
+print("")
+print(player1.name + ' vs ' + player2.name)
 print("")
 time.sleep(1)
 print(foolish_fun(player1.health), '|', foolish_fun(player2.health, False), ": 체력")
@@ -157,6 +157,8 @@ typing("게임을 시작합니다...")
 turn = 1
 while True:
     os.system("cls")
+    print('%d 번째 턴' % turn)
+    print('------------------------------------------')
     print('%s의 공격\n %s %d 데미지\n %s의 남은 체력 : %d' % player1.attack(player2))
     print('------------------------------------------')
     if player2.health <= 0:
