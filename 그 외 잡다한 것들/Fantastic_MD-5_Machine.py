@@ -165,7 +165,6 @@ while True:
         print('승자의 남은 체력 : %.2f ' % (player1.health / 10))
         print('진행한 턴 수 : %d' % turn)
         break
-    time.sleep(1)
     print('%s의 공격\n %s %d 데미지\n %s의 남은 체력 : %d' % player2.attack(player1))
     print('------------------------------------------')
     if player1.health <= 0:
@@ -174,5 +173,5 @@ while True:
         print('승자의 남은 체력 : %.2f ' % (player2.health / 10))
         print('진행한 턴 수 : %d' % turn)
         break
-    time.sleep(1)
+    time.sleep(2)
     turn = turn + 1
