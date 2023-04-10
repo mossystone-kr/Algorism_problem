@@ -45,8 +45,8 @@ class player:
         if self.power >= ply_persent:
             ply_persent2 = rd.randrange(1, 1000)
             if self.critical >= ply_persent2:
-                ally.health = ally.health - self.power * self.critic / 100
-                return self.name, "크리티컬!!", self.power * self.critic / 1000, ally.name, ally.health / 10
+                ally.health = ally.health - self.power * self.critic / 1000
+                return self.name, "크리티컬!!", self.power * self.critic / 10000, ally.name, ally.health / 10
             else:
                 ally.health = ally.health - self.power
                 return self.name, "일반 공격", self.power / 10, ally.name, ally.health / 10
@@ -88,7 +88,7 @@ def mapping_md5(adbad):
     adbad.luck = int((int(adbad.md5[8] + adbad.md5[9], 16) + 1) * 1000 / 256)
     adbad.mana = int((int(adbad.md5[10] + adbad.md5[11], 16) + 1) * 1000 / 256)
     adbad.critical = int((int(adbad.md5[12] + adbad.md5[13], 16) + 1) * 1000 / 256)
-    adbad.critic = int((int(adbad.md5[14] + adbad.md5[15], 16) + 1) * 1000 / 256) + 100
+    adbad.critic = int((int(adbad.md5[14] + adbad.md5[15], 16) + 1) * 1000 / 256) + 1000
     adbad.hit_rate = int((int(adbad.md5[16] + adbad.md5[17], 16) + 1) * 1000 / 256)
     adbad.magic = int((int(adbad.md5[18] + adbad.md5[19], 16) + 1) * 1000 / 256)
     adbad.magics = [int(adbad.md5[20], 16), int(adbad.md5[21], 16), int(adbad.md5[22], 16)]
