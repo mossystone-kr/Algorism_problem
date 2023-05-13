@@ -77,7 +77,7 @@ class player:
             return self.name, "공격 실패!", 0, ally.name, ally.health / 10
 
 
-def typing(strigab, dsv=True):
+def typing(strigab, dsv=False):
     for dab in strigab:
         print(dab, end='')
         time.sleep(0.01)
